@@ -80,10 +80,11 @@ public class LinkedListDeque<T>{
 		if (isEmpty()){
 			return null;
 		}
+		T first = sentinel.next.item;
 		sentinel.next = sentinel.next.next;
-		sentinel.next.next.prev = sentinel;
+		sentinel.next.prev = sentinel;
 		size -= 1;
-		return sentinel.next.item;
+		return first;
 	}
 
 	/* Removes and returns the item at the back of the deque.
@@ -92,10 +93,11 @@ public class LinkedListDeque<T>{
 		if (isEmpty()){
 			return null;
 		}
+		T last = sentinel.prev.item;
 		sentinel.prev = sentinel.prev.prev;
-		sentinel.prev.prev.next = sentinel;
+		sentinel.prev.next = sentinel;
 		size -= 1;
-		return sentinel.prev.item;
+		return last;
 	}
 
 	/* (Use iteration) Get the item at the given index. If no such item exists, returns null */
