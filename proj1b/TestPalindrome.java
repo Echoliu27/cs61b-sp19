@@ -1,4 +1,4 @@
-/*import org.junit.Test;
+import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class TestPalindrome {
@@ -15,4 +15,32 @@ public class TestPalindrome {
         }
         assertEquals("persiflage", actual);
     }
-}     Uncomment this class once you've created your Palindrome class. */
+    @Test
+    public void testIsPalindrome(){
+        assertTrue(palindrome.isPalindrome("racecar"));
+        assertTrue(palindrome.isPalindrome("Racecar"));
+        assertTrue(palindrome.isPalindrome("noon"));
+        assertTrue(palindrome.isPalindrome("a"));
+        assertTrue(palindrome.isPalindrome(""));
+
+        assertFalse(palindrome.isPalindrome("rancor"));
+        assertFalse(palindrome.isPalindrome("aaaaab"));
+        assertFalse(palindrome.isPalindrome("horse"));
+    }
+
+    @Test
+    public void testIsPalindromeCC(){
+        OffByOne cc = new OffByOne();
+        assertTrue(palindrome.isPalindrome("", cc));
+        assertTrue(palindrome.isPalindrome("flake", cc));
+        assertFalse(palindrome.isPalindrome("cat", cc));
+    }
+
+    @Test
+    public void testIsPalindromeCCN(){
+        OffByN cc = new OffByN(5);
+        assertTrue(palindrome.isPalindrome("acf", cc));
+        assertTrue(palindrome.isPalindrome("ham", cc));
+        assertFalse(palindrome.isPalindrome("cat", cc));
+    }
+}     
